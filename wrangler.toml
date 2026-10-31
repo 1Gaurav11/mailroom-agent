@@ -1,0 +1,19 @@
+name = "mailroom-agent"
+main = "src/worker.js"
+compatibility_date = "2025-09-01"
+
+[[durable_objects.bindings]]
+name = "STORE"
+class_name = "MailroomStore"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["MailroomStore"]
+
+[vars]
+# Optional comma-separated OpenRouter model ids. Leave empty to auto-discover free models.
+MODELS = ""
+CHUNK_SIZE = "8"
+CONCURRENCY = "4"
+
+# Secret (never commit): npx wrangler secret put OPENROUTER_API_KEY
